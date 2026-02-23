@@ -14,7 +14,7 @@ window.addEventListener("load", createLightbox);
 
 function createLightbox() {
    // Lightbox Container
-   let lightbox = document.getElementById("lightbox");
+   let lightBox = document.getElementById("lightbox");
 
    // Parts of the lightbox
    let lbTitle = document.createElement("h1");
@@ -31,7 +31,7 @@ lbTitle.id = "lbTitle";
 lbTitle.textContent = lightboxTitle;
 
 // Design the lightbox slide counter
-lightbox.appendChild(lbCounter);
+lightBox.appendChild(lbCounter);
 lbCounter.id = "lbCounter";
 let currentImg = 1;
 lbCounter.textContent = currentImg + " / " + imgCount;
@@ -39,14 +39,17 @@ lbCounter.textContent = currentImg + " / " + imgCount;
 // Design the lightbox previous slide button
 lightBox.appendChild(lbPrev);
 lbPrev.id = "lbPrev";
+lbPrev.innerHTML = "&#9664;";
 
 // Design the lightbox next slide button 
 lightBox.appendChild(lbNext);
 lbNext.id = "lbNext";
+lbNext.innerHTML = "&#9654;";
 
 // Design the lightbox Play-Pause button
 lightBox.appendChild(lbPlay);
 lbPlay.id = "lbPlay";
+lbPlay.innerHTML = "&#9199;";
 
 // Design the lightbox images container
 lightBox.appendChild(lbImages);
@@ -58,6 +61,15 @@ for (let i = 0; i < imgFiles.length; i++) {
    image.alt = imgCaptions[i];
    lbImages.appendChild(image);
 }
+
+// Function to move forward through the image list
+function ShowNext() {
+   lbImages.appendChild(lbImages.firstElementChild);
+   (currentImg < imgCount) ? currentImg++ : currentImg = 1;
+   lbCounter.textContent = currentImg + " / " + imgCount;
+   }
+
+   
 
 
 function setupGallery() {
